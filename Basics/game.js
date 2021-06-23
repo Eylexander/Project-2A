@@ -41,15 +41,19 @@ k.scene("main", () => {
     })
 
     const map = k.addLevel([
-        "     ",
-        "  @  ",
-        "     ",
-        "xxxxx",
+        "      ",
+        "   @  ",
+        "      ",
+        "      ",
+        "xxxxxx",
     ], {
         width: 100,
         height: 100,
         "x": [k.sprite("ground"), k.solid(), k.scale(0.25)],
-        "@": [k.sprite("enemy"), k.scale(0.1), k.body(), 'danger']
+        "@": [k.sprite("enemy"), k.scale(0.1),
+        // k.body(), 
+        'danger',
+        ]
         // any(ch) {
         //     if(char[ch]) {
         //         sprite(char.sprite),
@@ -62,9 +66,9 @@ k.scene("main", () => {
         // }
     });
 
-    // char.collides('danger', () => {
-    //     k.destroy(char)
-    // });
+    char.collides('danger', () => {
+        k.destroy(char)
+    });
 });
 
 // map.width();
