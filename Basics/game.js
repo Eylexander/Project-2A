@@ -1,8 +1,8 @@
 const k = kaboom();
 
-k.loadSprite("bot", './sprites/bot.png');
-k.loadSprite("ground", './sprites/ground2.png');
-k.loadSprite("enemy", './sprites/mee6.png');
+k.loadSprite('bot', 'sprites/bot.png');
+k.loadSprite('ground', './sprites/ground2.png');
+k.loadSprite('enemy', './sprites/mee6.png');
 const SPEED = 200;
 
 // k.kaboom({
