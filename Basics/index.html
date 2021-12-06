@@ -11,30 +11,22 @@
     <link rel="icon" type="image/x-icon" href="../index_specs/latest.png" />
     <link rel="stylesheet" href="../index_specs/styles.css" />
     <style>
-        * {
-          margin: 0;
+        .example {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            border: 10px rgb(255, 115, 0);
+            scrollbar-width: none;
+            -ms-overflow-style: none;
         }
-        html,
-        body {
-          width: 100%;
-          height: 100%;
-          overflow: hidden;
+        .example::-webkit-scrollbar {
+            display: none;
         }
-        canvas {
-          display: fullscreen;
-        }
-      </style>
+    </style>
 </head>
 
-<body>
+<body class="example">
     <script src="https://kaboomjs.com/dist/kaboom.js"></script>
-    
-    <!-- <section id="game">
-        <div class=""> -->
-            <script src="./game.js"></script>
-            <!-- <p>Oui</p> -->
-        <!-- </div>
-    </section> -->
+    <script src="game.js"></script>
 </body>
 
 <footer class="py-5 bg-dark">
