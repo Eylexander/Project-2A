@@ -5,18 +5,16 @@ k.loadSprite('ground', './sprites/ground2.png');
 k.loadSprite('enemy', './sprites/mee6.png');
 const SPEED = 200;
 
-// k.kaboom({
-//     global: true, // import all kaboom functions to global namespace
-//     width: 1600, // width of canvas
-//     height: 900, // height of canvas
-//     canvas: document.getElementById("game"), // use custom canvas
-//     scale: 2, // pixel size (for pixelated games you might want small canvas + scale)
-//     clearColor: [0, 0, 1, 1], // background color (default black [0, 0, 0, 1])
-//     fullscreen: true, // if fullscreen
-//     crisp: true, // if pixel crisp (for sharp pixelated games)
-//     debug: false, // debug mode
-//     plugins: [ asepritePlugin, ], // load plugins
-// });
+k.kaboom({
+    fullscreen: true,
+    width: 1600,
+    height: 900,
+    scale: 2,
+    startScene: "main",
+    debug: true,
+    clearColor: null,
+    version: "0.5.1"
+});
 
 // define a scene
 k.scene("main", () => {
@@ -41,11 +39,11 @@ k.scene("main", () => {
     })
 
     const map = k.addLevel([
-        "      ",
-        "   @  ",
-        "      ",
-        "      ",
-        "xxxxxx",
+        "       ",
+        "   @   ",
+        "       ",
+        "       ",
+        "xxxxxxx",
     ], {
         width: 100,
         height: 100,
