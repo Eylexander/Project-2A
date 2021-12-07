@@ -10,61 +10,71 @@ const k = kaboom({
     background: [ 255, 127, 0, ],
 });
 
-k.loadSprite('bot', 'sprites/bot.png');
-k.loadSprite('ground', './sprites/ground2.png');
-k.loadSprite('enemy', './sprites/mee6.png');
-const SPEED = 200;
+k.loadSprite('bot', 'sprites/bookshelf.png');
+k.loadSprite('ground', './sprites/jukebox_side.png');
+k.loadSprite('enemy', './sprites/tnt_side.png');
+var SPEED = 200;
 
 // define a scene
-k.scene("main", () => {
+// k.scene("main", () => {
     k.addLevel([
-        "       ",
-        "   @   ",
-        "       ",
-        "       ",
-        "       ",
-        "xxxxxxx",
+        "                                   ",
+        "   @                               ",
+        "                                   ",
+        "                                   ",
+        "             @                     ",
+        "                                   ",
+        "                                   ",
+        "                                   ",
+        "                                   ",
+        "                                   ",
+        "                                   ",
+        "                                   ",
+        "                                   ",
+        "                                   ",
+        "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
     ], {
         width: 32,
         height: 32,
         "x": () => [
             k.sprite("ground"),
             k.solid(),
-            k.area()
+            k.area(),
+            k.scale(2)
         ],
         "@": () => [
             k.sprite("enemy"),
             k.area(),
+            k.scale(2),
             "danger",
         ]
     });
 
-    // const char = k.add([
-    //     k.sprite('bot'),
-    //     // k.text("ohhimark", 32),
-    //     k.pos(20, 20),
-    //     k.scale(0.5),
-    //     k.area(),
-    //     k.body(),
-    // ]);
+    const char = k.add([
+        k.sprite('bot'),
+        k.pos(20, 10),
+        k.scale(2),
+        k.area(),
+        k.body(),
+    ]);
 
-    // k.keyDown('right' , () => {
-    //     char.move(SPEED, 0)
+    k.onKeyDown('d' , () => {
+        char.move(SPEED, 0)
+    })
+
+    k.onKeyDown('q' , () => {
+        char.move(-SPEED, 0)
+    })
+
+    k.onKeyDown('space' | 'z' , () => {
+        char.jump(SPEED)
+    })
+
+    // k.onKeyPress("f", (c) => {
+    //     k.fullscreen(!k.isFullscreen())
     // })
 
-    // k.keyDown('left' , () => {
-    //     char.move(-SPEED, 0)
-    // })
-
-    // k.keyDown('space' , () => {
-    //     char.move(0, -(2*SPEED))
-    // })
-
-    // k.KeyPress("f", (c) => {
-    //     fullscreen(!isFullscreen())
-    // })
-
-    // char.collides('danger', () => {
-    //     k.destroy(char)
-    // });
-});
+    char.collides('danger', () => {
+        k.destroy(char)
+    });
+// });
