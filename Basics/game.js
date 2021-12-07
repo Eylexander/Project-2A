@@ -15,24 +15,27 @@ k.loadSprite('ground', './sprites/jukebox_side.png');
 k.loadSprite('enemy', './sprites/tnt_side.png');
 var SPEED = 200;
 
-// define a scene
-// k.scene("main", () => {
-    k.addLevel([
-        "                                   ",
-        "   @                               ",
-        "                                   ",
-        "                                   ",
-        "             @                     ",
-        "                                   ",
-        "                                   ",
-        "                                   ",
-        "                                   ",
-        "                                   ",
-        "                                   ",
-        "                                   ",
-        "                                   ",
-        "                                   ",
-        "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+// define a level
+k.addLevel([
+    "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "x                                         x",
+    "x                                         x",
+    "x                                 @       x",
+    "x             @                           x",
+    "x                                         x",
+    "x                                         x",
+    "x                                         x",
+    "x                         @               x",
+    "x                                         x",
+    "x   @                                     x",
+    "x                                         x",
+    "x                                         x",
+    "x                                         x",
+    "x                                         x",
+    "x                                         x",
+    "x                                         x",
+    "x                                         x",
+    "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
     ], {
         width: 32,
         height: 32,
@@ -47,34 +50,38 @@ var SPEED = 200;
             k.area(),
             k.scale(2),
             "danger",
+        ],
+        "c": () => [
+            k.sprite("bot"),
+            k.area(),
+            k.scale(2),
+            k.body()
         ]
     });
 
-    const char = k.add([
-        k.sprite('bot'),
-        k.pos(20, 10),
-        k.scale(2),
-        k.area(),
-        k.body(),
-    ]);
+const char = k.add([
+    k.sprite('bot'),
+    k.pos(10, 10),
+    k.scale(2),
+    k.area(),
+    k.body(),
+]);
 
-    k.onKeyDown('d' , () => {
-        char.move(SPEED, 0)
-    })
+k.onKeyDown('d' , () => {
+    char.move(SPEED, 0)
+})
 
-    k.onKeyDown('q' , () => {
-        char.move(-SPEED, 0)
-    })
+k.onKeyDown('q' , () => {
+    char.move(-SPEED, 0)
+})
 
-    k.onKeyDown('space' | 'z' , () => {
-        char.jump(SPEED)
-    })
+k.onKeyDown('z' , () => {
+    char.jump()
+})
+// k.onKeyPress("f", (c) => {
+//     k.fullscreen(!k.isFullscreen())
+// })
 
-    // k.onKeyPress("f", (c) => {
-    //     k.fullscreen(!k.isFullscreen())
-    // })
-
-    char.collides('danger', () => {
-        k.destroy(char)
-    });
-// });
+char.collides('danger', () => {
+    k.destroy(char)
+});
