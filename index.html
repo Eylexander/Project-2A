@@ -11,26 +11,6 @@
     <title>Eylexander - Project 2A</title>
     <link rel="icon" type="image/x-icon" href="index_specs/latest.png" />
     <link href="index_specs/styles.css" rel="stylesheet" />
-    <style>
-        link {
-            display: none;
-        }
-        #header {
-            background-color: rgba(23, 116, 253, 1)
-        }
-        #sources {
-            background-color: rgba(23,116,253, 0.35);
-        }
-        #games {
-            background-color: rgba(23,116,253, 0.25)
-        }
-        #contact {
-            background-color: rgba(23,116,253, 0.25)
-        }
-        a:link, a:visited, a:hover, a:active {
-            text-decoration: none;
-        }
-    </style>
 </head>
 
 <body id="page-top">
@@ -45,7 +25,7 @@
                     <li class="nav-item px-1"><a class="btn-dark nav-link" href="#sources">Sources</a></li>
                     <li class="nav-item px-1"><a class="btn-dark nav-link" href="#contact">Contact</a></li>
                     <li class="nav-item px-1"><a class="btn-dark nav-link" href="./phpmyadmin">Admin Panel</a></li>
-                    <li class="nav-item px-1"><button id="modebutton" class="btn btn-dark nav-link" onclick="Mode()">Dark Mode</button></l>
+                    <li class="nav-item px-1"><a id="modebutton" class="btn-dark nav-link" onclick="Mode()">Dark Mode</a></l>
                 </ul>
             </div>
         </div>
@@ -54,7 +34,13 @@
     <script>
         function Mode() {
             var content = document.getElementById("modebutton");
-            content.innerText = "Light Mode";
+            if (content.innerText = "Dark Mode") {
+                content.innerText = "Light Mode";
+            } else if (content.innerText = "Light Mode") {
+                content.innerText = "Dark Mode";
+            } else {
+                return
+            }
         }
     </script>
 

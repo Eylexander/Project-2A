@@ -5,15 +5,18 @@ const k = kaboom({
     startScene: "main",
     debug: true,
     fullscreen: false,
-    // clearColor: null,
-    // version: "0.5.1"
-    background: [ 255, 127, 0, ],
+    background: [ 255, 127, 0],
 });
+
+if (!k.isFocused()) {
+    k.focus()
+}
 
 k.loadSprite('bot', 'sprites/bookshelf.png');
 k.loadSprite('ground', './sprites/jukebox_side.png');
 k.loadSprite('enemy', './sprites/tnt_side.png');
 var SPEED = 200;
+var pv = 100;
 
 // define a level
 k.addLevel([
@@ -33,7 +36,7 @@ k.addLevel([
     "x                                         x",
     "x                                         x",
     "x                                         x",
-    "x                                         x",
+    "x                                       a x",
     "x                                         x",
     "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
     ], {
@@ -51,11 +54,12 @@ k.addLevel([
             k.scale(2),
             "danger",
         ],
-        "c": () => [
-            k.sprite("bot"),
-            k.area(),
+        "a": () => [
+            k.sprite("enemy"),
             k.scale(2),
-            k.body()
+            k.area(),
+            k.body(),
+            "danger"
         ]
     });
 
@@ -66,6 +70,12 @@ const char = k.add([
     k.area(),
     k.body(),
 ]);
+
+const score = k.add([
+    text(pv),
+    pos(12, 12),
+    fixed(),
+])
 
 k.onKeyDown('d' , () => {
     char.move(SPEED, 0)
@@ -78,10 +88,10 @@ k.onKeyDown('q' , () => {
 k.onKeyDown('z' , () => {
     char.jump()
 })
-// k.onKeyPress("f", (c) => {
-//     k.fullscreen(!k.isFullscreen())
-// })
 
 char.collides('danger', () => {
-    k.destroy(char)
+    pv = pv-50;
+    if (pv <= 0) {
+        k.destroy(char)
+    }
 });

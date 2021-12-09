@@ -10,6 +10,38 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+
+.example {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  border: 10px rgba(255, 115, 0, 1);
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  background-color: rgb(255, 127, 0);
+}
+.example::-webkit-scrollbar {
+  display: none;
+}
+link {
+  display: none;
+}
+#header {
+  background-color: rgba(23, 116, 253, 1)
+}
+#sources {
+  background-color: rgba(23,116,253, 0.35);
+}
+#games {
+  background-color: rgba(23,116,253, 0.25)
+}
+#contact {
+  background-color: rgba(23,116,253, 0.25)
+}
+a:link, a:visited, a:hover, a:active {
+  text-decoration: none;
+}
+
+
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
